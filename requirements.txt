@@ -1,0 +1,87 @@
+# Dr.MeD - Backend Requirements
+# Install with: pip install -r requirements.txt
+
+# Core Framework
+Flask==3.0.0
+flask-cors==4.0.0
+
+# File Handling
+werkzeug==3.0.1
+python-multipart==0.0.6
+
+# Database (Choose one based on your needs)
+# SQLAlchemy==2.0.23  # For SQL databases
+# pymongo==4.6.0      # For MongoDB
+
+# AI/ML Libraries
+# ==========================================
+
+# Deep Learning
+# torch==2.1.0                    # PyTorch for neural networks
+# tensorflow==2.15.0              # TensorFlow alternative
+# transformers==4.35.0            # Hugging Face transformers for NLP
+
+# Medical NLP
+# scispacy==0.5.3                 # Scientific/Medical NLP
+# spacy==3.7.0                    # General NLP framework
+# medcat==1.9.0                   # Medical concept annotation
+
+# Machine Learning
+# scikit-learn==1.3.2             # Traditional ML algorithms
+# xgboost==2.0.2                  # Gradient boosting
+# lightgbm==4.1.0                 # Light gradient boosting
+
+# NLP & Text Processing
+# nltk==3.8.1                     # Natural language toolkit
+# gensim==4.3.2                   # Topic modeling
+# sentence-transformers==2.2.2    # Sentence embeddings
+
+# OCR & PDF Processing
+# pytesseract==0.3.10             # OCR for images
+# pdf2image==1.16.3               # Convert PDF to images
+# PyPDF2==3.0.1                   # PDF text extraction
+# pdfplumber==0.10.3              # Advanced PDF parsing
+
+# Vector Databases (RAG)
+# pinecone-client==2.2.4          # Pinecone vector database
+# chromadb==0.4.18                # ChromaDB vector store
+# qdrant-client==1.6.9            # Qdrant vector database
+# weaviate-client==3.26.0         # Weaviate vector database
+
+# LLM Integration
+# openai==1.3.7                   # OpenAI API
+# anthropic==0.7.0                # Anthropic Claude API
+# langchain==0.1.0                # LangChain framework
+# llama-index==0.9.24             # LlamaIndex for RAG
+
+# Data Processing
+numpy==1.26.2
+pandas==2.1.4
+
+# Image Processing
+# Pillow==10.1.0                  # Image manipulation
+# opencv-python==4.8.1            # Computer vision
+
+# API & Utilities
+requests==2.31.0
+python-dotenv==1.0.0
+python-dateutil==2.8.2
+
+# Authentication & Security
+# PyJWT==2.8.0                    # JWT tokens
+# bcrypt==4.1.1                   # Password hashing
+# cryptography==41.0.7            # Encryption
+
+# Monitoring & Logging
+# prometheus-client==0.19.0       # Metrics
+# sentry-sdk==1.39.1              # Error tracking
+
+# Testing
+# pytest==7.4.3
+# pytest-cov==4.1.0
+# pytest-mock==3.12.0
+
+# Development
+# black==23.12.0                  # Code formatting
+# flake8==6.1.0                   # Linting
+# mypy==1.7.1                     # Type checking
