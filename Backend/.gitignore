@@ -1,0 +1,15 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Test files
+sample.png
+test_ocr.py
+temp_page.png
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Large model cache (never upload)
+.cache/

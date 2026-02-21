@@ -11,9 +11,9 @@ import json
 from datetime import datetime
 import uuid
 import glob
-import pdfplumber
 from structured_extraction import extract_lab_values
 from llm_generator import analyze_with_llm
+from ocr_engine import extract_text_from_report as ocr_extract
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend communication
@@ -54,13 +54,23 @@ class AIModels:
     @staticmethod
     def extract_text_from_report(file_path):
         """
-        Extract text from medical report using pdfplumber
+        Hybrid extraction:
+        - Digital PDF → direct text
+        - Scanned PDF → OCR
+        - Image → OCR
         """
-        text = ""
-        with pdfplumber.open(file_path) as pdf:
-            for page in pdf.pages:
-                text += (page.extract_text() or "")
-        return text
+        try:
+            text = ocr_extract(file_path)
+
+            print("\n================ OCR PREVIEW ================\n")
+            print(text[:800])
+            print("\n=============================================\n")
+
+            return text
+
+        except Exception as e:
+            print("OCR extraction failed:", e)
+            return ""
     
     @staticmethod
     def nlp_extract(text):
