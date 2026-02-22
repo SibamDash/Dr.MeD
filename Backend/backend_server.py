@@ -30,22 +30,18 @@ from threading import Timer
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 FRONTEND_DIR = os.path.join(os.path.dirname(BASE_DIR), 'Frontend')
-app = Flask(__name__)
+app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path='')
 
-# ── Serve medical-ai.html at the root URL ───────────────────────────────────
+# ── Serve Frontend Files ──────────────────────────────────────────────────
 @app.route('/')
 def serve_home():
-    """Serve the main home page — open http://localhost:5001 in your browser."""
-    return send_from_directory(FRONTEND_DIR, 'home.html')
-
-@app.route('/medical-ai.html')
-def serve_medical_ai():
-    """Serve the AI analysis page."""
-    return send_from_directory(FRONTEND_DIR, 'medical-ai.html')
-
-@app.route('/report-summary.html')
-def serve_report_summary():
-    return send_from_directory(FRONTEND_DIR, 'report-summary.html')
+    """
+    Serve the main home page.
+    The static_folder config will handle all other frontend files
+    like .js, .css, other .html files, and images.
+    """
+    # The static handler doesn't serve a default file for `/`, so we do it here.
+    return app.send_static_file('home.html')
 
 
 # Configuration
