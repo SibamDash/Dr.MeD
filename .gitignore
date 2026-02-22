@@ -1,27 +1,42 @@
+# -------------------------
 # Python
+# -------------------------
 .venv/
+venv/
 __pycache__/
 *.pyc
 
+# -------------------------
 # Node
+# -------------------------
 node_modules/
 
-# Env
+# -------------------------
+# Environment
+# -------------------------
 .env
 
+# -------------------------
 # Models
+# -------------------------
 *.pt
 *.pkl
 *.h5
 
+# -------------------------
 # Logs
+# -------------------------
 *.log
 
-# OS
+# -------------------------
+# OS Files
+# -------------------------
 .DS_Store
-.venv/
-__pycache__/
-*.pyc
-node_modules/
-.env
-.DS_Store
+
+# -------------------------
+# Generated Project Data
+# -------------------------
+Backend/uploads/
+Backend/data/uploads/
+Backend/data/analysis/
+Backend/_debug_last.json
