@@ -1,3 +1,4 @@
+from chatbot import ask_chatbot
 from flask import Flask, request, jsonify, send_from_directory
 from werkzeug.utils import secure_filename
 import os
@@ -29,7 +30,7 @@ from threading import Timer
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 FRONTEND_DIR = os.path.join(os.path.dirname(BASE_DIR), 'Frontend')
-app = Flask(__name__, static_folder=BASE_DIR, static_url_path='/static')
+app = Flask(__name__)
 
 # ── Serve medical-ai.html at the root URL ───────────────────────────────────
 @app.route('/')
@@ -40,6 +41,10 @@ def serve_frontend():
 @app.route('/report-summary.html')
 def serve_report_summary():
     return send_from_directory(FRONTEND_DIR, 'report-summary.html')
+
+@app.route('/<path:filename>')
+def serve_static_files(filename):
+    return send_from_directory(FRONTEND_DIR, filename)
 
 # Configuration
 app.config['UPLOAD_FOLDER'] = 'uploads/'
@@ -579,6 +584,28 @@ def confidence_score():
         
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+# ==================== CHATBOT ENDPOINT ====================
+
+@app.route('/api/chatbot', methods=['POST'])
+def chatbot():
+    try:
+        data = request.json
+        message = data.get("message", "")
+        context = data.get("context", "")
+
+        if not message:
+            return jsonify({"success": False, "error": "Message is required"}), 400
+
+        reply = ask_chatbot(message, context)
+
+        return jsonify({
+            "success": True,
+            "reply": reply
+        }), 200
+
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
 
 # ==================== HEALTH CHECK ====================
 
